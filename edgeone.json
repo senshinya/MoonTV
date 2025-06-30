@@ -1,0 +1,6 @@
+{
+  "buildCommand": "pnpm gen:runtime && cp next.config.edgeone.js next.config.js && pnpm next build",
+  "installCommand": "pnpm install --frozen-lockfile",
+  "outputDirectory": "out",
+  "nodeVersion": "22.11.0"
+}

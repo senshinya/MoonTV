@@ -54,11 +54,11 @@
 | 语言      | TypeScript 4                                                                      |
 | 播放器    | [VidStack](https://vidstack.io/) · [HLS.js](https://github.com/video-dev/hls.js/) |
 | 代码质量  | ESLint · Prettier · Jest                                                          |
-| 部署      | Docker · Vercel                                                                   |
+| 部署      | Docker · Vercel · EdgeOne.ai                                                      |
 
 ## 部署
 
-本项目**支持 Vercel、Docker 和 Cloudflare** 部署。
+本项目**支持 Vercel、Docker、Cloudflare 和 EdgeOne.ai** 部署。
 
 ### Vercel 部署
 
@@ -81,6 +81,24 @@
 4. 构建命令填写 **pnpm install --frozen-lockfile && pnpm run pages:build**，预设框架为无，构建输出目录保持空
 5. （强烈建议）设置 PASSWORD 环境变量。
 6. 保持默认设置完成首次部署。
+7. 如需自定义 `config.json`，请直接修改 Fork 后仓库中该文件。
+8. 每次 Push 到 `main` 分支将自动触发重新构建。
+
+### EdgeOne.ai 部署
+
+> 腾讯云 EdgeOne Pages 服务，支持静态站点 + 无服务器函数，适合国内用户。
+
+1. **Fork** 本仓库到你的 GitHub 账户。
+2. 登陆 [EdgeOne.ai](https://edgeone.ai)，点击 **创建项目**。
+3. 选择 **导入 Git 仓库**，选择 Fork 后的仓库。
+4. 配置构建设置：
+   - **框架预设**：`Other`
+   - **根目录**：`./`
+   - **输出目录**：`out`
+   - **编译命令**：`pnpm gen:runtime && cp next.config.edgeone.js next.config.js && pnpm next build`
+   - **安装命令**：`pnpm install --frozen-lockfile`
+5. （强烈建议）设置 PASSWORD 环境变量。
+6. 完成首次部署。
 7. 如需自定义 `config.json`，请直接修改 Fork 后仓库中该文件。
 8. 每次 Push 到 `main` 分支将自动触发重新构建。
 
